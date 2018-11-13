@@ -113,5 +113,3 @@ def seq2seq(mode, features, labels, params):
         train_op=train_op
     )
 
-
-    # test
