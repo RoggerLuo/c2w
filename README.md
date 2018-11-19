@@ -1,6 +1,2 @@
-# biLSTM
-中文词语标记
+# Char-language model
 
-python3 runRnn.py 来运行
-
-很多方法值得借鉴
