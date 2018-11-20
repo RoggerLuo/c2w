@@ -16,14 +16,15 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='BI LSTM')
     parser.add_argument('--source_data', help='source size', default='./data/data.pkl')
     
-    parser.add_argument('--train_batch_size', help='train batch size', default=3)
+    parser.add_argument('--train_batch_size', help='train batch size', default=10)
     parser.add_argument('--dev_batch_size', help='dev batch size', default=3)
     parser.add_argument('--test_batch_size', help='test batch size', default=10)
 
-    parser.add_argument('--num_layer', help='num of layer', default=2, type=int)
-    parser.add_argument('--num_units', help='num of units', default=88, type=int)
+    parser.add_argument('--num_layer', help='num of layer', default=4, type=int)
+    parser.add_argument('--num_units', help='num of units', default=50, type=int)
     parser.add_argument('--embedding_size', help='time steps', default=64, type=int)
     parser.add_argument('--time_step', help='time steps', default=32, type=int)
+    # parser.add_argument('--category_num', help='category num', default=32, type=int)
     parser.add_argument('--category_num', help='category num', default=5, type=int)
 
     parser.add_argument('--summaries_dir', help='summaries dir', default='summaries/', type=str)

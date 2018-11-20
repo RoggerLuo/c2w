@@ -2,7 +2,7 @@ import tensorflow as tf
 import pickle
 import numpy as np
 from sklearn.model_selection import train_test_split
-
+from corpus import corpusApi
 
 def load_data(FLAGS):
     """
@@ -10,13 +10,17 @@ def load_data(FLAGS):
     :return: Arrays
     """
     with open(FLAGS.source_data, 'rb') as f:
+        # data_x = corpusApi.getData()
+        # data_y = data_x 
+
         data_x = pickle.load(f)
         data_y = pickle.load(f)
-        word2id = pickle.load(f)
-        id2word = pickle.load(f)
-        tag2id = pickle.load(f)
-        id2tag = pickle.load(f)
-        return data_x, data_y, word2id, id2word, tag2id, id2tag
+
+        # word2id = pickle.load(f)
+        # id2word = pickle.load(f)
+        # tag2id = pickle.load(f)
+        # id2tag = pickle.load(f)
+    return data_x, data_y#, word2id, id2word, tag2id, id2tag
 
 def get_data(data_x, data_y):
     """
@@ -27,7 +31,7 @@ def get_data(data_x, data_y):
     """
     
     # print('Data X Length', len(data_x), 'Data Y Length', len(data_y))
-    # print('Data X Example', data_x[0])
+    print('Data X Example', data_x[0])
     # print('Data Y Example', data_y[0])
     '''
     data_x
@@ -51,14 +55,15 @@ def getData(FLAGS):
     
     # main()
 
-    data_x, data_y, word2id, id2word, tag2id, id2tag = load_data(FLAGS)
+    data_x, data_y = load_data(FLAGS) #, word2id, id2word, tag2id, id2tag 
 
     train_x, train_y, dev_x, dev_y, test_x, test_y = get_data(data_x, data_y)
 
-    vocab_size = len(word2id) + 1
+    
+    vocab_size = corpusApi.getVocabSize() + 1 #len(word2id) + 1
     FLAGS.vocab_size = vocab_size
 
-    return train_x, train_y, dev_x, dev_y, test_x, test_y, word2id, id2word, tag2id, id2tag
+    return train_x, train_y, dev_x, dev_y, test_x, test_y#, word2id, id2word, tag2id, id2tag
 
 
 

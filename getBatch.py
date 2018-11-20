@@ -8,8 +8,13 @@ from getData import getData
 
 
 def getBatch(FLAGS):
-    train_x, train_y, dev_x, dev_y, test_x, test_y, word2id, id2word, tag2id, id2tag = getData(FLAGS)
-    
+    train_x, train_y, dev_x, dev_y, test_x, test_y = getData(FLAGS) # , word2id, id2word, tag2id, id2tag 
+    print('----getBatch---')
+    print(type(train_x))
+    print(type(train_x[0]))
+    print(train_x[0])
+    print(train_y[0])
+
     train_steps = math.ceil(train_x.shape[0] / FLAGS.train_batch_size)
     dev_steps = math.ceil(dev_x.shape[0] / FLAGS.dev_batch_size)
     test_steps = math.ceil(test_x.shape[0] / FLAGS.test_batch_size)
